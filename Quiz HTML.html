@@ -2,6 +2,23 @@
 <html>
 <head>
   <title>Lord of the Rings Quiz</title>
+
+  <style>
+    .answer {
+      display: none;
+      font-size: 16px;
+      color: #333;
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+    input.correct {
+      background-color: green;
+    }
+
+    input.incorrect {
+      background-color: red;
+    }
+  </style>
 </head>
 <body>
   <h1>Lord of the Rings Quiz</h1>
@@ -116,4 +133,36 @@
       The Lonely Mountain is a great fortress in the north of Middle-earth that was once home to the dwarves, and it is the location of the One Ring's destruction.
     </div>
   </form>
+
+  <script>
+    document.querySelectorAll("input[type='radio']").forEach((radioButton) => {
+      radioButton.addEventListener("click", (event) => {
+        // Get the name of the radio button group (e.g. "q1", "q2", etc.)
+        const name = event.target.name;
+
+        // Get the value of the "data-correct" attribute for the selected radio button
+        const isCorrect = event.target.getAttribute("data-correct") === "true";
+
+        // Disable all radio buttons in the group
+        document.querySelectorAll(`input[name='${name}']`).forEach((button) => {
+          button.disabled = true;
+        });
+
+        // Add the "correct" class to the selected radio button if it is correct, or the "incorrect" class if it is incorrect
+        if (isCorrect) {
+          event.target.classList.add("correct");
+        } else {
+          event.target.classList.add("incorrect");
+
+          // Find the correct radio button in the group and add the "correct" class to it
+          const correctButton = document.querySelector(`input[name='${name}'][data-correct='true']`);
+          correctButton.classList.add("correct");
+        }
+
+        // Show the corresponding answer div
+        const answerDiv = document.querySelector(`#${name}answer`);
+        answerDiv.style.display = "block";
+      });
+    });
+  </script>
 </body>
