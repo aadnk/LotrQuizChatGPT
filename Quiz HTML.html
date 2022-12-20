@@ -11,11 +11,10 @@
       background-color: #f5f5f5;
       padding: 10px;
     }
-    input.correct {
+    label.correct {
       background-color: green;
     }
-
-    input.incorrect {
+    label.incorrect {
       background-color: red;
     }
   </style>
@@ -148,15 +147,15 @@
           button.disabled = true;
         });
 
-        // Add the "correct" class to the selected radio button if it is correct, or the "incorrect" class if it is incorrect
+        // Add the "correct" class to the label element for the selected radio button if it is correct, or the "incorrect" class if it is incorrect
         if (isCorrect) {
-          event.target.classList.add("correct");
+          event.target.nextElementSibling.classList.add("correct");
         } else {
-          event.target.classList.add("incorrect");
+          event.target.nextElementSibling.classList.add("incorrect");
 
-          // Find the correct radio button in the group and add the "correct" class to it
+          // Find the correct radio button in the group and add the "correct" class to its label element
           const correctButton = document.querySelector(`input[name='${name}'][data-correct='true']`);
-          correctButton.classList.add("correct");
+          correctButton.nextElementSibling.classList.add("correct");
         }
 
         // Show the corresponding answer div
