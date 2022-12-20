@@ -134,6 +134,23 @@
   </form>
 
   <script>
+    let correctAnswers = 0;
+    let totalAnswers = 0;
+
+    function updateScore(isCorrect) {
+      if (isCorrect) {
+        correctAnswers++;
+      }
+      totalAnswers++;
+
+      if (totalAnswers === 10) {
+        // Show the score div
+        const scoreDiv = document.createElement("div");
+        scoreDiv.innerHTML = `You got ${correctAnswers} out of 10 questions correct!`;
+        document.body.appendChild(scoreDiv);
+      }
+    }
+
     document.querySelectorAll("input[type='radio']").forEach((radioButton) => {
       radioButton.addEventListener("click", (event) => {
         // Get the name of the radio button group (e.g. "q1", "q2", etc.)
@@ -161,6 +178,8 @@
         // Show the corresponding answer div
         const answerDiv = document.querySelector(`#${name}answer`);
         answerDiv.style.display = "block";
+
+        updateScore(isCorrect);
       });
     });
   </script>
