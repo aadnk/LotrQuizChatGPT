@@ -4,6 +4,34 @@
   <title>Lord of the Rings Quiz</title>
 
   <style>
+    body {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #3c3c3c;
+      color: #fff;
+      font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    }
+
+    form {
+      margin: 20px;
+      background-color: #222;
+      padding: 20px;
+    }
+
+    label {
+      font-size: 16px;
+      color: #fff;
+      margin: 10px;
+    }
+
+    label.correct {
+      background-color: green;
+    }
+
+    label.incorrect {
+      background-color: red;
+    }
+
     .answer {
       display: none;
       font-size: 16px;
@@ -11,11 +39,11 @@
       background-color: #f5f5f5;
       padding: 10px;
     }
-    label.correct {
-      background-color: green;
-    }
-    label.incorrect {
-      background-color: red;
+
+    .score {
+      border: 2px solid blue;
+      margin: 20px;
+      padding: 20px;
     }
   </style>
 </head>
@@ -146,6 +174,7 @@
       if (totalAnswers === 10) {
         // Show the score div
         const scoreDiv = document.createElement("div");
+        scoreDiv.classList.add("score");
         scoreDiv.innerHTML = `You got ${correctAnswers} out of 10 questions correct!`;
         document.body.appendChild(scoreDiv);
       }
