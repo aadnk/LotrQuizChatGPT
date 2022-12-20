@@ -5,4 +5,4 @@ Elrond was the "captain" of The White Council, but he was indeed a member.
 
 The full chat log with OpenGPT can be found in the docs [here](https://aadnk.github.io/LotrQuizChatGPT/docs/QuizChatSession.htm).
 
-You can play with the game [directly on Github Pages](https://aadnk.github.io/LotrQuizChatGPT).
+You can try the quiz [directly on Github Pages](https://aadnk.github.io/LotrQuizChatGPT).
